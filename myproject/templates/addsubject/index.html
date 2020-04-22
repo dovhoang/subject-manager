@@ -1,0 +1,91 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block cssblock%}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="{% static 'css/addsubject.css' %}">
+{% endblock %}
+
+
+{% block content %}
+<section id="cover" class="min-vh-100">
+    <div id="cover-caption">
+        <div class="container">
+            <div class="row text-white">
+                <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                    <h3 class="display-4 py-2 text-truncate">Thêm môn học</h3>
+                    <div class="px-2">
+                        <form action="{% url 'postsub' %}" method="post" class="justify-content-center">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="inputName">Tên môn học</label>
+                                <input type="text" id="inputName" name="name" class="form-control" placeholder=""
+                                required>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputFaculty">Khoa</label>
+                                <select id="inputFaculty" name="faculty" class="form-control">
+                                    {% if listFaculty %}
+                                    {% for item in listFaculty %}
+                                    <option value={{item.id}} {% if item.id == 1 %} selected {%endif%}>{{ item.name }}
+                                    </option>
+                                    {% endfor %}
+                                    {% endif %}
+                                </select>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputtc">Số tín chỉ</label>
+                                    <select id="inputtc" name="tc" class="form-control">
+                                        <option value=2 selected>2</option>
+                                        <option value=3>3</option>
+                                        <option value=4>4</option>
+                                        <option value=5>5</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputType">Loại</label>
+                                    <select id="inputType" name="type" class="form-control">
+                                        <option value=0 selected>Bắt buộc</option>
+                                        <option value=1>Tự chọn</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg">Thêm</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block jsblock %}
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+{% endblock %}
+
+
+<!--<div class="col-6">-->
+
+
+<!--    <form>-->
+<!--        <div class="form-group">-->
+<!--            <label for="inputName">Tên</label>-->
+<!--            <input type="text" class="form-control" id="inputName" placeholder="">-->
+<!--        </div>-->
+
+<!--        <button type="submit" class="btn btn-primary">Sign in</button>-->
+<!--    </form>-->
+
+<!--</div>-->
+

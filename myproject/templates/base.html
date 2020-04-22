@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subject Management</title>
+
+    {% block cssblock %}
+    {% endblock %}
+      <link rel="stylesheet" href="{% static 'css/base.css'%}">
+</head>
+<body>
+<div class="row">
+    <div class="col">
+        <h1 class="section-title">QUẢN LÍ MÔN HỌC</h1>
+    </div>
+</div>
+{% block content %}
+{% endblock %}
+
+
+{% block jsblock %}
+{% endblock %}
+
+</body>
+</html>
